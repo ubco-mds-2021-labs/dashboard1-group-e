@@ -82,8 +82,6 @@ All team members agree to the following conventions around course deadlines:
 3. We agree to notify the other team members at least one day in advance if we do not think we will make it on time for the deadline.
 
 
-*N.B. 
-
 ## Git Workflow
 
 There are many git workflows possible when working on a team project with many moving parts.
