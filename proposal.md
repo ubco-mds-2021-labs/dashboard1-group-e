@@ -2,7 +2,7 @@
 
 ## Section 1: Motivation and Purpose
 
-**Our role:** Data Scientists at a Superstore
+**Our role:** Data Scientists at a Superstore    
 **Target audience:** Store sales productivity and general managers, marketing team and the CFO.
 
 Managing one of the biggest supermarket chain in Canada is no easy task. Tracking sales and profit figures across different states and segments can be challenging as there is a lot of data to process. Data visualization tools such as a sales dashboard can help paint a clear picture on the performance of the stores in each state and segments.  
@@ -17,12 +17,14 @@ The dataset contains details for the orders of a Superstore in the US, sourced f
 
 ## Section 3: 
 
-**Research Questions and Usage Scenarios**
-1. From which city in each state the superstore company got the maximum profit with respect to the sales? 
-2. How does price, quality and quantity of a product and customer care service affects on the sales and profit of the company?
-3. Which product category has the highest effect on Sales by discount?
-
-**Usage**:
+**Research Questions and Usage Scenarios**    
+**Research Questions:**   
+- What is the most and least sold sub-category for each category in terms of sales? How does this differ for each state?    
+- Which states tend to have the most of their orders made through second class?     
+- Given information about a particular order (shipment mode, segment, state, category, sub-category) what will the sales, profit, and profit margin be?     
+- How does discount affecting the total number of sales and profit of each product categories/sub-categories?    
+   
++ Usage:   
 
 
 
