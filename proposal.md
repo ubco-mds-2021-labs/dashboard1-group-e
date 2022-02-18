@@ -19,10 +19,10 @@ The dataset contains details for the orders of a Superstore in the US, sourced f
 
 **Research Questions and Usage Scenarios**
 + Research Questions: 
-   ++ What is the most and least sold sub-category for each category in terms of sales? How does this differ for each state?   
-   ++ Which states tend to have the most of their orders made through second class?   
-   ++ Given information about a particular order (shipment mode, segment, state, category, sub-category) what will the sales, profit, and profit margin be?   
-   ++ How does discount affecting the total number of sales and profit of each product categories/sub-categories?
+++ What is the most and least sold sub-category for each category in terms of sales? How does this differ for each state?    
+++ Which states tend to have the most of their orders made through second class?     
+++ Given information about a particular order (shipment mode, segment, state, category, sub-category) what will the sales, profit, and profit margin be?     
+++ How does discount affecting the total number of sales and profit of each product categories/sub-categories?    
    
 + Usage:   
 
