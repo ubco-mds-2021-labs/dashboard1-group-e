@@ -33,7 +33,7 @@ This plot shows the top five items sold in a particular state. The states data f
 5. US Map
 There are three components inside this plot. The first one is a drop-down menu that the user can select to filter the data. Changing the selection of the drop-down menu will change which state is highlighted in the US Map, the predicted sales, profit, and profit margin figures, and all the other four plots discussed above. The user can also click on the map to select which state they want to view and this will also change the rest of the dashboards.
 
-<img src ="images/dashboard_sketch.png" width="100px">
+<img src ="images/dashboard_sketch.png">
 
 ## Describe your dataset in about 150-200 words
 
