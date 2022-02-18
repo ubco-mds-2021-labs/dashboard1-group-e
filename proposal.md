@@ -2,8 +2,8 @@
 
 ## Section 1: Motivation and Purpose
 
-**Our role:** Data Scientist at Superstore   
-**Target audience:** Managers, CFO, Board of Directors at Superstore
+**Our role:** Data Scientists at a Superstore
+**Target audience:** Store sales productivity and general managers, marketing team and the CFO.
 
 Managing one of the biggest supermarket chain in Canada is no easy task. Tracking sales and profit figures across different states and segments can be challenging as there is a lot of data to process. Data visualization tools such as a sales dashboard can help paint a clear picture on the performance of the stores in each state and segments.  
 
