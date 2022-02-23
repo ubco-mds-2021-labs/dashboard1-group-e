@@ -6,7 +6,7 @@ Managing one of the biggest supermarket chain in Canada is no easy task. Trackin
 
 - Evelyn Sugihermanto: I love watching k-dramas in my spare time.
 - Justine Filion: I love skiing and art journaling. 
-- Person 3: one sentence about you!
+- Mehul Bhargava: I love bird watching, gardening, observing wildlife, and marker art.
 - Person 4: one sentence about you!
 
 ## Describe your topic/interest in about 150-200 words
