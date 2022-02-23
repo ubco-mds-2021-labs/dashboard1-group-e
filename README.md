@@ -5,13 +5,13 @@ Managing one of the biggest supermarket chain in Canada is no easy task. Trackin
 ## Team Members
 
 - Evelyn Sugihermanto: I love watching k-dramas in my spare time.
-- Person 2: one sentence about you!
+- Justine Filion: I love skiing and art journaling. 
 - Person 3: one sentence about you!
 - Person 4: one sentence about you!
 
 ## Describe your topic/interest in about 150-200 words
 
-The main topic of interest that our dashboard aims to achieve is to track and predict the sales and profit performance of Superstore. Tracking of sales and profit can be achieved by visualizing the sales and profit figures across different variables of interest such as Ship Mode, Market Segment, States, Category and Sub-category of items. Tracking the sales and profit figures across different variables of interest is essential as it would help the audience better understand the current situation of the stores and which factors contribute most to the sales and profit. Apart from that, we are also interested to incorporate a prediction feature in our dashboard through some machine learning models such as Random Forest, Boosting, etc. to predict the sales and profit figures. The prediction feature hopes to help the audience predict which Ship Mode, Market Segment, States, Category and Sub-category of items will bring in more sales and profit.This will hopefully enable our target audience to focus on improving categories with lower sales and profit and maintain categories that has higher sales and profit.
+The main topic of interest that our dashboard aims to achieve is to track and predict the sales and profit performance of Superstore. Tracking of sales and profit can be achieved by visualizing the sales and profit figures across different variables of interest such as Ship Mode, Market Segment, States, Category and Sub-category of items. Tracking the sales and profit figures across different variables of interest is essential as it would help the audience better understand the current situation of the stores and which factors contribute most to the sales and profit. Apart from that, we are also interested in incorporating a prediction feature in our dashboard through some machine learning models such as Random Forest, Boosting, etc. to predict the sales and profit figures. The prediction feature hopes to help the audience predict which Ship Mode, Market Segment, States, Category and Sub-category of items will bring in more sales and profit.This will hopefully enable our target audience to focus on improving categories with lower sales and profit and maintain categories that has higher sales and profit.
 
 ## About this Dashboard
 
@@ -36,7 +36,7 @@ There are three components inside this plot. The first one is a drop-down menu t
 
 ## Describe your dataset in about 150-200 words
 
-The dataset contains details for the orders of a Superstore in the US, sourced from Kaggle [https://www.kaggle.com/nazarmahadialseied/superstore-sales]. This dataset will help us to understand which attribute has affected the sales and profit for the superstore sales. The dataset consists of 13 different attributes of a sample of entries. Attributes are ordinal, categorical and quantitative. Each of the rows (9994 samples) corresponds to a combination of attributes like ship mode, segment, country, city, stat, postal code, region category, sub-category, quantity, and discount with the sales and profit associated with them. The goal of this data is to establish value insights from their sales such as average sales, profits from different regions, categories, etc. which could help the Superstores make good strategies for their business future plan in the market. These estimates could be used to identify which sector of the market is under loss and which sector is making huge profits which supports the business to make appropriate decisions.
+The dataset contains details for the orders of a Superstore in the US, sourced from Kaggle [https://www.kaggle.com/nazarmahadialseied/superstore-sales]. This dataset will help us to understand which attribute has affected the sales and profit for the superstore sales. The dataset consists of 13 different attributes of a sample of entries. Attributes are ordinal, categorical and quantitative. Each of the rows (9994 samples) corresponds to a combination of attributes like ship mode, segment, country, city, state, postal code, region category, sub-category, quantity, and discount with the sales and profit associated with them. The goal of this data is to establish value insights from their sales such as average sales, profits from different regions, categories, etc. which could help the Superstores make good strategies for their business future plan in the market. These estimates could be used to identify which sector of the market is under loss and which sector is making huge profits which supports the business to make appropriate decisions.
 
 ## Acknowledgements and references 
 
