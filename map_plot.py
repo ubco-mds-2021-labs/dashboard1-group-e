@@ -57,6 +57,7 @@ margin_card = dbc.Card(
 ########## map ###############
 ##############################
 
+# https://stackoverflow.com/questions/66892810/using-transform-lookup-for-an-altair-choropleth-figure
 states = alt.topo_feature(data.us_10m.url, feature="states")
 
 # per https://gist.github.com/mbostock/4090848#gistcomment-2102151
@@ -67,15 +68,24 @@ ansi = ansi[["id", "abbr", "State"]]
 # getting the id to match with the state from the original dataframe
 full = pd.merge(df, ansi, how="left", on="State")
 
+highlight = alt.selection_single(on="click", fields=["State"], empty="none")
+
 
 chart = (
     alt.Chart(states)
     .mark_geoshape(stroke="black")
-    .encode(color="Sales:Q", tooltip=["State:N", "Sales:Q"])
+    .encode(
+        stroke=alt.condition(highlight, alt.value("black"), alt.value("#ffffff00")),
+        color="Sales:Q",
+        tooltip=["State:N", "Sales:Q"],
+    )
     .transform_lookup(lookup="id", from_=alt.LookupData(full, "id", ["Sales", "State"]))
     .properties(width=500, height=300)
+    .add_selection(highlight)
     .project("albersUsa")
 )
+
+chart
 
 
 ##############################
