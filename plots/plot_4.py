@@ -1,13 +1,17 @@
+from ctypes import alignment
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
-
 import pandas as pd
+import dash_bootstrap_components as dbc
 
+# Read data
 df = pd.read_csv('../data/Superstore.csv')
 states = sorted(df['State'].unique())
 
-app = Dash(__name__)
+# Create instance of app
+app = Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+# Layout
 app.layout = html.Div([
     html.H1(id='output-title'),
     html.Br(),
@@ -16,7 +20,7 @@ app.layout = html.Div([
 
 ])
 
-
+# Callback
 @app.callback(
     Output('output-title', 'children'),
     Output('bar-graph-top-items', 'figure'),
