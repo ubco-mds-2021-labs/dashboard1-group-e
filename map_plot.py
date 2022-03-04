@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from tkinter import ALL
 from unittest import skip
 from dash import Dash, html, dcc
@@ -16,6 +17,16 @@ df = pd.read_csv("Superstore.csv")
 
 # Wrangling data (made it a function, because have to rewrangle data when doing map --> see update_data() function)
 def wrangle_data(unwrangled_data):
+    """Takes an unwrangled data set and formats it in the appropriate way
+
+    Args:
+        unwrangled_data (pandas dataframe): Data that needs to be wrangled
+
+    Returns:
+        pandas dataframe: A dataframe with a Profit_Margin column where the profit and sales are grouped over all cities. New columns are also
+                            added for the abbreviation of the name of the state and its ID.
+
+    """
     # Removing outlier
     df = unwrangled_data.drop(
         unwrangled_data[unwrangled_data.Profit == -6599.9780].index
@@ -30,7 +41,7 @@ def wrangle_data(unwrangled_data):
     # Adding column for profit margin
     df["Profit_Margin"] = df["Profit"] / df["Sales"]
 
-    # For rows that don't have sales (0/0 = NaN --> replace with 0)
+    # For rows that don't have sales (when calculating profit margin we get 0/0 = NaN --> replace with 0)
     df = df.fillna(0)
 
     # Adding id (ansi code) to corresponding state in order to do chloropleth map
@@ -50,51 +61,9 @@ df = wrangle_data(df)
 ######## Layout Elements ################
 #########################################
 
-app = Dash(
-    __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP],
-    suppress_callback_exceptions=True,
-)
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 ############ Cards to display info on top of map ##############
-
-############# info in cards #########
-
-
-def info_cards(
-    ship_mode,
-    segment,
-    state,
-    category,
-    sub_category,
-):
-
-    updated_df = df[
-        (df["Category"] == category)
-        & (df["Sub-Category"] == sub_category)
-        & (df["State"] == state)
-        & (df["Ship Mode"] == ship_mode)
-        & (df["Segment"] == segment)
-    ][["Sales", "Profit", "Profit_Margin"]]
-
-    sales = updated_df["Sales"]
-    profit = updated_df["Profit"]
-    margin = (updated_df["Profit_Margin"]) * 100
-
-    if len(sales) != 0:
-        sales_formatted = sales.map("${:,.2f}".format)
-        profit_formatted = profit.map("${:,.2f}".format)
-        margin_formatted = margin.map("{:,.2f}%".format)
-
-    else:
-        sales_formatted = "-"
-        profit_formatted = "-"
-        margin_formatted = "-"
-
-    return sales_formatted, profit_formatted, margin_formatted
-
-
-##### Container for cards ########
 
 sales_card = dbc.Card(
     [
@@ -221,10 +190,17 @@ def plot_map(
     # Formatting for tooltip and chloropleth legend (depends on whether we have sales/proft ($) or margin (%))
     if metric == "Profit_Margin":
         metric_format = ".0%"
-        # metric_color = "yelloworangered"
+
     else:
         metric_format = "$.0f"
-        # metric_color = "redblue"
+
+    # Formatting for color scheme and mid-range of legend
+    if (metric == "Profit_Margin") or (metric == "Profit"):
+        mid_scale_color = 0
+        color_theme = "redblue"
+    else:
+        mid_scale_color = NULL
+        color_theme = "blues"
 
     updated_df = update_data(
         ship_mode=ship_mode,
@@ -245,7 +221,7 @@ def plot_map(
                 f"{metric}:Q",
                 alt.value("lightgray"),
                 legend=alt.Legend(format=metric_format),
-                scale=alt.Scale(scheme="redblue"),
+                scale=alt.Scale(scheme=color_theme, domainMid=mid_scale_color),
             ),
             # color=alt.Color(
             #     f"{metric}:Q",
@@ -312,8 +288,8 @@ app.layout = dbc.Container(
                     id="radiobutton_map",
                     options=[
                         {"label": "Profit", "value": "Profit"},
-                        {"label": "Profit Margin", "value": "Profit_Margin"},
                         {"label": "Sales", "value": "Sales"},
+                        {"label": "Profit Margin", "value": "Profit_Margin"},
                     ],
                     value="Sales",
                     inline=True,
