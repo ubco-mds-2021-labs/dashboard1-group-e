@@ -1,3 +1,4 @@
+from tkinter import ALL
 from unittest import skip
 from dash import Dash, html, dcc
 from dash.dependencies import Input, Output
@@ -49,7 +50,11 @@ df = wrangle_data(df)
 ######## Layout Elements ################
 #########################################
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(
+    __name__,
+    external_stylesheets=[dbc.themes.BOOTSTRAP],
+    suppress_callback_exceptions=True,
+)
 
 ############ Cards to display info on top of map ##############
 
@@ -63,37 +68,23 @@ def info_cards(
     category,
     sub_category,
 ):
-    sales = df.loc[
-        (df["Ship Mode"] == ship_mode)
-        & (df["Segment"] == segment)
-        & (df["State"] == state)
-        & (df["Category"] == category)
-        & (df["Sub-Category"] == sub_category),
-        "Sales",
-    ]
 
-    profit = df.loc[
-        (df["Ship Mode"] == ship_mode)
-        & (df["Segment"] == segment)
+    updated_df = df[
+        (df["Category"] == category)
+        & (df["Sub-Category"] == sub_category)
         & (df["State"] == state)
-        & (df["Category"] == category)
-        & (df["Sub-Category"] == sub_category),
-        "Profit",
-    ]
+        & (df["Ship Mode"] == ship_mode)
+        & (df["Segment"] == segment)
+    ][["Sales", "Profit", "Profit_Margin"]]
 
-    margin = df.loc[
-        (df["Ship Mode"] == ship_mode)
-        & (df["Segment"] == segment)
-        & (df["State"] == state)
-        & (df["Category"] == category)
-        & (df["Sub-Category"] == sub_category),
-        "Profit_Margin",
-    ]
+    sales = updated_df["Sales"]
+    profit = updated_df["Profit"]
+    margin = (updated_df["Profit_Margin"]) * 100
 
     if len(sales) != 0:
-        sales_formatted = "${:,.2f}".format(sales[0])
-        profit_formatted = "${:,.2f}".format(profit[0])
-        margin_formatted = "{:,.2f}%".format(margin[0] * 100)
+        sales_formatted = sales.map("${:,.2f}".format)
+        profit_formatted = profit.map("${:,.2f}".format)
+        margin_formatted = margin.map("{:,.2f}%".format)
 
     else:
         sales_formatted = "-"
@@ -111,6 +102,7 @@ sales_card = dbc.Card(
         dbc.CardBody(
             [
                 html.H4(
+                    children="",
                     className="text-center",
                     id="sales_card",
                 ),
@@ -124,7 +116,7 @@ profit_card = dbc.Card(
         dbc.CardHeader("Profit", class_name="text-center"),
         dbc.CardBody(
             [
-                html.H4(className="text-center", id="profit_card"),
+                html.H4(children="", className="text-center", id="profit_card"),
             ]
         ),
     ]
@@ -134,7 +126,7 @@ margin_card = dbc.Card(
         dbc.CardHeader("Profit Margin", class_name="text-center"),
         dbc.CardBody(
             [
-                html.H4(className="text-center", id="margin_card"),
+                html.H4(children="", className="text-center", id="margin_card"),
             ]
         ),
     ]
@@ -336,7 +328,7 @@ app.layout = dbc.Container(
                     dcc.Dropdown(
                         placeholder="Select a state",
                         id="dropdown_state",
-                        value="Louisiana",  # REQUIRED to show the plot on the first page load
+                        value="Colorado",  # REQUIRED to show the plot on the first page load
                         options=[
                             {"label": state, "value": state}
                             for state in sorted(df["State"].unique())
@@ -434,37 +426,22 @@ def set_subcategory_options(selected_category):
     ],
 )
 def update_cards(ship_mode, segment, state, category, sub_category):
-    sales = df.loc[
-        (df["Ship Mode"] == ship_mode)
-        & (df["Segment"] == segment)
+    updated_df = df[
+        (df["Category"] == category)
+        & (df["Sub-Category"] == sub_category)
         & (df["State"] == state)
-        & (df["Category"] == category)
-        & (df["Sub-Category"] == sub_category),
-        "Sales",
-    ]
+        & (df["Ship Mode"] == ship_mode)
+        & (df["Segment"] == segment)
+    ][["Sales", "Profit", "Profit_Margin"]]
 
-    profit = df.loc[
-        (df["Ship Mode"] == ship_mode)
-        & (df["Segment"] == segment)
-        & (df["State"] == state)
-        & (df["Category"] == category)
-        & (df["Sub-Category"] == sub_category),
-        "Profit",
-    ]
-
-    margin = df.loc[
-        (df["Ship Mode"] == ship_mode)
-        & (df["Segment"] == segment)
-        & (df["State"] == state)
-        & (df["Category"] == category)
-        & (df["Sub-Category"] == sub_category),
-        "Profit_Margin",
-    ]
+    sales = updated_df["Sales"]
+    profit = updated_df["Profit"]
+    margin = (updated_df["Profit_Margin"]) * 100
 
     if len(sales) != 0:
-        sales_formatted = "${:,.2f}".format(sales[0])
-        profit_formatted = "${:,.2f}".format(profit[0])
-        margin_formatted = "{:,.2f}%".format(margin[0] * 100)
+        sales_formatted = sales.map("${:,.2f}".format)
+        profit_formatted = profit.map("${:,.2f}".format)
+        margin_formatted = margin.map("{:,.2f}%".format)
 
     else:
         sales_formatted = "-"
