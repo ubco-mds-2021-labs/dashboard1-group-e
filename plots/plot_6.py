@@ -40,7 +40,7 @@ def update_figure(selected_item):
         transition_duration=500
     )
 
-    return f'Top 5 States With Highest {selected_item} Sales', fig
+    return f'Top 5 States With Highest Quantity Sold in: {selected_item}', fig
 
 
 if __name__ == '__main__':
