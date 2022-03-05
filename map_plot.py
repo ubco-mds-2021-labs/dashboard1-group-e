@@ -164,6 +164,7 @@ def update_data(
 
 def plot_map(
     metric="Sales",
+    state="Colorado",
     ship_mode="First Class",
     segment="Consumer",
     category="Furniture",
@@ -184,8 +185,6 @@ def plot_map(
 
     # https://stackoverflow.com/questions/66892810/using-transform-lookup-for-an-altair-choropleth-figure
     states = alt.topo_feature(data.us_10m.url, feature="states")
-
-    highlight = alt.selection_single(on="click", fields=["State"], empty="none")
 
     # Formatting for tooltip and chloropleth legend (depends on whether we have sales/proft ($) or margin (%))
     if metric == "Profit_Margin":
@@ -213,13 +212,16 @@ def plot_map(
         alt.Chart(states)
         .mark_geoshape(stroke="black")
         .encode(
-            stroke=alt.value(
-                "black"
-            ),  # alt.condition(highlight, alt.value("black"), alt.value("#ffffff00")),
+            stroke=alt.condition(
+                alt.datum.State == state, alt.value("black"), alt.value("black")
+            ),
+            strokeWidth=alt.condition(
+                alt.datum.State == state, alt.value(4), alt.value(0.5)
+            ),
             color=alt.condition(
                 f"datum.{metric} != 0",
                 f"{metric}:Q",
-                alt.value("lightgray"),
+                alt.value("white"),
                 legend=alt.Legend(format=metric_format),
                 scale=alt.Scale(scheme=color_theme, domainMid=mid_scale_color),
             ),
@@ -247,7 +249,6 @@ def plot_map(
             ),
         )
         .properties(width=500, height=300)
-        .add_selection(highlight)
         .project("albersUsa")
     )
 
@@ -291,7 +292,7 @@ app.layout = dbc.Container(
                         {"label": "Sales", "value": "Sales"},
                         {"label": "Profit Margin", "value": "Profit_Margin"},
                     ],
-                    value="Sales",
+                    value="Profit",
                     inline=True,
                     inputStyle={"margin-right": "5px", "margin-left": "20px"},
                 )
@@ -434,14 +435,15 @@ def update_cards(ship_mode, segment, state, category, sub_category):
     Output("map", "srcDoc"),
     [
         Input("radiobutton_map", "value"),
+        Input("dropdown_state", "value"),
         Input("dropdown_ship_mode", "value"),
         Input("dropdown_segment", "value"),
         Input("dropdown_category", "value"),
         Input("dropdown_sub_category", "value"),
     ],
 )
-def update_map(metric, ship_mode, segment, category, sub_category):
-    return plot_map(metric, ship_mode, segment, category, sub_category)
+def update_map(metric, state, ship_mode, segment, category, sub_category):
+    return plot_map(metric, state, ship_mode, segment, category, sub_category)
 
 
 if __name__ == "__main__":
