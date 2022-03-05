@@ -10,7 +10,6 @@ df = pd.read_csv("Superstore.csv")
 
 # data wrangling required for the plot
 df = df.drop_duplicates()
-df = df.drop(df[df.Sales < 100].index)
 df = df.drop(df[df.Profit == -6599.9780].index)
 df_furniture = df[df["Category"]=="Furniture"]
 df_office = df[df["Category"]=="Office Supplies"]
@@ -48,8 +47,7 @@ app.layout = html.Div(dbc.Container([   # here, I have created a container to st
             html.Iframe(
         id='barchart',    # ID for bar chart
         style={'border-width': '0', 'width': '100%', 'height': '500px'}))])]), # styling for plot
-        style={'width':'50%',"border":"6px hotpink solid", 
-        'backgroundColor':'black'}) # styling for overall dashboard
+        style={'width':'50%',"border":"6px lightgray solid"}) # styling for overall dashboard
    
 
 @app.callback(          # dash decorator function
@@ -76,19 +74,19 @@ def my_plot(category):            # callback function
     x=cat,
     y=cat_sales,
     name='Sales',
-    marker_color='purple'
+    marker_color='red'
     ))
     fig.add_trace(go.Bar(
     x=cat,
     y=cat_profit,
     name='Profit',
-    marker_color='hotpink'
+    marker_color='midnightblue'
     ))
 
     fig.update_layout(barmode='group', xaxis_tickangle=0, title="Overall Sales & Profit by Category", 
-                  title_font_size=25, title_x=0.339, title_y=0.96, xaxis_title="Sub-categories",
-                 template = "plotly_dark", margin=dict(l=20, r=20, t=45, b=9), 
-                 legend=dict(y=0.6, font_size=15), xaxis = dict(tickfont = dict(size=12)))             # styling for plot
+                  title_font_size=25, title_x=0.339, title_y=0.96, xaxis_title="Sub-categories", 
+                  margin=dict(l=20, r=20, t=45, b=9), plot_bgcolor="white", 
+                 legend=dict(y=0.6, font_size=15), xaxis = dict(tickfont = dict(size=10)), hovermode="x unified") # styling for plot
     fig.update_yaxes(tickprefix="<b>",ticksuffix ="</b><br>")
     fig.update_xaxes(tickprefix="<b>",ticksuffix ="</b><br>")
     
