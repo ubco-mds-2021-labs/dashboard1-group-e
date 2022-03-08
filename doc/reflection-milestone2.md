@@ -30,8 +30,6 @@ We split the tasks according to the different plots. Everybody was working on at
 
 - Adding a description for the dashboard and making it more obvious that the dropdowns below the map will eventually be global controls
 
-- Changing the logo (from Real Canadian Superstore to American Superstore)
-
 ## What we know is not working
 
 - Callbacks to connect all the graphs together (i.e., when a user selects a state from the map, all the other graphs should be updated to reflect data of that particular state. Currently only the 3 cards above the map are linked and the rest of the plots show the sum for all the states).
