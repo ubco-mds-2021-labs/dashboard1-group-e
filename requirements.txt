@@ -7,6 +7,5 @@ plotly
 altair
 pandas
 asyncio
-tkinter
 unittest
 vega_datasets
