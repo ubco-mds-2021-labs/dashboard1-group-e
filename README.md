@@ -23,8 +23,8 @@ This plot shows the sales and profit of the stores with respect to different sub
 **2. Metrics Proportion by Segment Pie Chart**     
 This plot shows the metrics proportion by segment. There are three segments in our data (consumer, corporate, and home office), each will have a different color and three metrics (sales, profit, and items sold) that the user can choose from the radio button options.
 
-**3. Sales and Profit by Ship Mode Line Chart**       
-This plot shows the sales and profit figures for each shipment mode. The shipment mode will be on the x-axis, the sales and profit figures will be on the y-axis.  
+**3. Sales and Profit Margin by Discount Bar Chart**       
+This plot shows the sales and profit margin figures for each Category/Sub-Category. The Categories/Sub-Categories will be on the x-axis, the sales and profit margin figures will be on the y-axis. Discounted or non-discounted product categories are diffrenciated by different colored bars.
 
 **4. Top Five Items Sold Bar plot**      
 This plot shows the top five items sold in a particular state. The states data for this plot will change if the user selects a different state through the US Map or the state drop-down menu below the US Map. 
