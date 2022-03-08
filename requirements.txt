@@ -7,7 +7,7 @@ plotly
 altair
 pandas
 ctypes
-asyncio.windows_events
+asyncio
 tkinter
 unittest
 vega_datasets
