@@ -9,11 +9,16 @@ Managing one of the biggest supermarket chain in the United States is no easy ta
 - Mehul Bhargava: I love bird watching, gardening, observing wildlife, and marker art.
 - Val Veeramani: I love going out on adventures in nature!
 
-## Describe your topic/interest in about 150-200 words
+* [Short description of our dashboard](#Description)
+* [Components of our dashboard](#The-Components)
+* [Description of the data we used](#Dataset)
+* [Reference to the kaggle dataset](#References)
+
+## Description
 
 Our dashboard aims to track the sales, profit and profit margin for all the *American Superstore*[^1] stores across the United States. Tracking of sales, profit and profit margin can be achieved by visualizing these metrics across different variables of interest such as `Ship Mode`, `Market Segment`, `State`, `Category` and `Sub-category` of items. Tracking sales and profits across different variables of interest is essential as it helps the audience better understand the current situation of the stores and enables them to notice which factors contribute most to the sales and profit. In doing so, better decisions can be made in order to guarantee the *American Superstore*'s success. 
 
-## About this Dashboard
+## Components
 
 Our dashboard aims to present the sales, profit and profit margin for all American Superstore stores across the United States. There are five main components in our dashboard which are:
 
@@ -37,11 +42,11 @@ There are three components inside this plot. The first one is a drop-down menu t
 
 <img src ="doc/images/dashboard_sketch.png">
 
-## Describe your dataset in about 150-200 words
+## Dataset
 
 The dataset contains details for the orders of a supermarket chain in the United States, sourced from Kaggle [https://www.kaggle.com/nazarmahadialseied/superstore-sales]. This dataset will help us to understand which attribute has affected the sales and profit for the superstore sales. The dataset consists of 13 different attributes of a sample of entries. Attributes are ordinal, categorical and quantitative. Each of the rows (9994 samples) corresponds to a combination of attributes like ship mode, segment, country, city, state, postal code, region category, sub-category, quantity, and discount with the sales and profit associated with them. The goal of this data is to illustrate valuable insights such as average sales, profits for different regions, categories, etc. This could help the stores in building better marketing strategies. These estimates could also be used to identify which sector of the market is under loss and which sector is making the most profit. This would lead the business team in making better decisions to ensure the stores' profitability.
 
-## Acknowledgements and references 
+## References 
 
 Dataset link: https://www.kaggle.com/nazarmahadialseied/superstore-sales
 
