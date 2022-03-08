@@ -14,9 +14,9 @@ We split the tasks according to the different plots. Everybody was working on at
 
 ## What is not yet implemented (and we are hoping to implement for milestone 4)
 
-- Callbacks to connect all the graphs together (i.e., when a user selects a state from the map, all the other graphs should be updated to reflect data of that particular state. Currently only the 3 cards above the map are linked).
+- Callbacks to connect all the graphs together (i.e., when a user selects a state from the map, all the other graphs should be updated to reflect data of that particular state. Currently only the 3 cards above the map are linked and the rest of the plots show the sum for all the states).
 
-- The sizing of the graph inside the dashboard is still a work in progress. Currently our dashboard is bigger than it should be.
+- The sizing of the graph inside the dashboard is still a work in progress. Currently our dashboard is bigger than it should be. Also, we want to make the map graph take up all the remaining space. 
 
 - The user can also click on the map to select which state they want to view and this will also change the rest of the dashboards. 
 
@@ -24,13 +24,17 @@ We split the tasks according to the different plots. Everybody was working on at
 
 - Adding the option for the user to choose only a category (no sub-category) and the sum of the sales and profit for all sub-categories within this category is shown.
 
-- Adding the option for the user  to select multiple options for each dropdown and the results show an aggregate of the metrics (sales/profit) for this selection.  
+- Adding the option for the user  to select multiple options for each dropdown and the results show an aggregate of the metrics (sales/profit) for this selection. 
+
+- Make the plots more uniform (ex: same font for titles)
+
+- Adding a description for the dashboard and making it more obvious that the dropdowns below the map will eventually be global controls
+
+- Changing the logo (from Real Canadian Superstore to American Superstore)
 
 ## What we know is not working
 
-- to be determined
-
-
+- Callbacks to connect all the graphs together (i.e., when a user selects a state from the map, all the other graphs should be updated to reflect data of that particular state. Currently only the 3 cards above the map are linked and the rest of the plots show the sum for all the states).
 
 ## Limitations (what we can't improve but wished we could)
 
