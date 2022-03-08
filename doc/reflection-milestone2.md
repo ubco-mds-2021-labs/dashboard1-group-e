@@ -44,7 +44,3 @@ The size of our dataset. Not all states have a value for sales and profit for ev
 
 It would have been interesting to have a section (maybe on a different tab) with a predictive model that would allow the user to predict the number of sales and profit for a given combination of variables. Because of the size of the dataset (too small) and the lack of time, we were not able to implement this. 
 
-
-```python
-
-```
