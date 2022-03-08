@@ -8,7 +8,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import altair as alt
-import base64
 
 # Read data
 df = pd.read_csv("../data/Superstore.csv")
@@ -95,6 +94,7 @@ df_plot5 = wrangle_data(df)
 
 # Create instance of app
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+server = app.server
 
 #########################################
 ######## Layout Components ##############
