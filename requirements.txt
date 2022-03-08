@@ -1,0 +1,13 @@
+gunicorn
+dash
+dash_bootstrap_components
+dash_core_components
+dash_html_components
+plotly
+altair
+pandas
+ctypes
+asyncio.windows_events
+tkinter
+unittest
+vega_datasets
