@@ -1,8 +1,6 @@
 import dash
 from dash import Dash, dcc, html, Input, Output
 from vega_datasets import data
-from asyncio.windows_events import NULL
-from tkinter import ALL
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
@@ -379,11 +377,9 @@ def plot_map(
 
     # Formatting for color scheme and mid-range of legend
     if (metric == "Profit_Margin") or (metric == "Profit"):
-        mid_scale_color = 0
-        color_theme = "redblue"
+        scale_metric = alt.Scale(scheme="redblue", domainMid=0)
     else:
-        mid_scale_color = NULL
-        color_theme = "blues"
+        scale_metric = alt.Scale(scheme="blues")
 
     updated_df = update_data(
         ship_mode=ship_mode,
@@ -407,7 +403,7 @@ def plot_map(
                 f"{metric}:Q",
                 alt.value("white"),
                 legend=alt.Legend(format=metric_format),
-                scale=alt.Scale(scheme=color_theme, domainMid=mid_scale_color),
+                scale=scale_metric,
             ),
             # color=alt.Color(
             #     f"{metric}:Q",
