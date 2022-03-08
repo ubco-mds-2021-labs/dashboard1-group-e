@@ -35,7 +35,7 @@ This plot shows the top five states which highest quantity sold a particular ite
 **6. US Map**      
 There are three components inside this plot. The first one is a drop-down menu that the user can select to filter the data for the whole dashboard. Changing the selection of the drop-down menu will update which state is highlighted in the US Map, the sales card, the profit card, the profit margin card as well as the selection for the other five plots discussed above. 
 
-<img src ="images/dashboard_sketch.png">
+<img src ="doc/images/dashboard_sketch.png">
 
 ## Describe your dataset in about 150-200 words
 
