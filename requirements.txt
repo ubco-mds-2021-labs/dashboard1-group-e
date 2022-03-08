@@ -6,7 +6,6 @@ dash_html_components
 plotly
 altair
 pandas
-ctypes
 asyncio
 tkinter
 unittest
