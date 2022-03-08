@@ -2,15 +2,10 @@
 
 Managing one of the biggest supermarket chain in the United States is no easy task. Tracking sales and profit figures across different states and segments can be challenging as there is a lot of data to process. Data visualization tools such as a sales dashboard can help paint a clearer picture of the performance of the stores in each state and segments. Our app will enable the target audience to explore different sales metrics for each state in order to better understand what factors contribute to a higher profit. Finally, this tool will help the marketing team target which category of products they should focus their efforts on.
 
-## Team Members
-
-- Evelyn Sugihermanto: I love watching k-dramas in my spare time.
-- Justine Filion: I love skiing and art journaling. 
-- Mehul Bhargava: I love bird watching, gardening, observing wildlife, and marker art.
-- Val Veeramani: I love going out on adventures in nature!
+Feel free to navigate to the following sections to find out more about our dashboard! 
 
 * [Short description of our dashboard](#Description)
-* [Components of our dashboard](#The-Components)
+* [Components of our dashboard](#Components)
 * [Description of the data we used](#Dataset)
 * [Reference to the kaggle dataset](#References)
 
