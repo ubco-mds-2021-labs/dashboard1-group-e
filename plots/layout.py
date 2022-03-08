@@ -10,7 +10,7 @@ import base64
 df = pd.read_csv('../data/Superstore.csv')
 
 # Create instance of app
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 
 # Components
 
@@ -114,7 +114,7 @@ app.layout = html.Div([
             dbc.Col([
                 dbc.Row(dbc.Col(plot5))], width=8)
            ]) 
-    ])
+    ], style={'backgroundColor': '#f9f8eb'})
 
 # Callback
 ## Callback: Plot 1
@@ -130,9 +130,16 @@ def update_figure(selected_metrics):
                                  'Corporate':'midnightblue',
                                  'Home Office':'lightgray'},
                 title='Metrics Proportion by Segment')
-    fig.update_layout(transition_duration=500).update_layout(
-        margin=dict(l=25, r=0, t=25, b=0))
+    fig.update_layout(
+            transition_duration=500
+        ).update_layout(
+            margin=dict(l=25, r=0, t=25, b=0)
+        ).update_layout({
+            'plot_bgcolor': 'rgba(0, 0, 0, 0)',
+            'paper_bgcolor': 'rgba(0, 0, 0, 0)',
+        })
     return fig
+
 
 ## Callback: Plot 2
 @app.callback(
@@ -147,8 +154,14 @@ def update_figure(selected_metrics):
                                  'Corporate':'midnightblue',
                                  'Home Office':'lightgray'},
                 title='Metrics Proportion by Segment')
-    fig.update_layout(transition_duration=500).update_layout(
-        margin=dict(l=25, r=0, t=25, b=0))
+    fig.update_layout(
+            transition_duration=500
+        ).update_layout(
+            margin=dict(l=25, r=0, t=25, b=0)
+        ).update_layout({
+            'plot_bgcolor': 'rgba(0, 0, 0, 0)',
+            'paper_bgcolor': 'rgba(0, 0, 0, 0)',
+        })
     return fig
 
 ## Callback: Plot 3
@@ -164,8 +177,14 @@ def update_figure(selected_metrics):
                                  'Corporate':'midnightblue',
                                  'Home Office':'lightgray'},
                 title='Metrics Proportion by Segment')
-    fig.update_layout(transition_duration=500).update_layout(
-        margin=dict(l=25, r=0, t=25, b=0))
+    fig.update_layout(
+            transition_duration=500
+        ).update_layout(
+            margin=dict(l=25, r=0, t=25, b=0)
+        ).update_layout({
+            'plot_bgcolor': 'rgba(0, 0, 0, 0)',
+            'paper_bgcolor': 'rgba(0, 0, 0, 0)',
+        })
     return fig
 
 ## Callback: Plot 4
@@ -204,8 +223,14 @@ def update_figure(selected_metrics):
                                  'Corporate':'midnightblue',
                                  'Home Office':'lightgray'},
                 title='Metrics Proportion by Segment')
-    fig.update_layout(transition_duration=500).update_layout(
-        margin=dict(l=25, r=0, t=25, b=0))
+    fig.update_layout(
+            transition_duration=500
+        ).update_layout(
+            margin=dict(l=25, r=0, t=25, b=0)
+        ).update_layout({
+            'plot_bgcolor': 'rgba(0, 0, 0, 0)',
+            'paper_bgcolor': 'rgba(0, 0, 0, 0)',
+        })
     return fig
 
 
