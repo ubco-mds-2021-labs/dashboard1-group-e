@@ -6,7 +6,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 import altair as alt
+import base64
 
+alt.data_transformers.disable_max_rows()
 # Read data
 df = pd.read_csv("../data/Superstore.csv")
 
@@ -100,7 +102,7 @@ server = app.server
 
 ## Components: Logo
 ### Reference: https://community.plotly.com/t/adding-local-image/4896/9
-logo = html.Img(src=app.get_asset_url("logo.png"), style={"height": "75%"})
+# logo = html.Img(src=app.get_asset_url("logo.png"), style={"height": "75%"})
 
 ## Components: Plot 1
 plot1 = html.Div(
