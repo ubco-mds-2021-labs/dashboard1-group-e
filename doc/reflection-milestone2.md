@@ -30,6 +30,8 @@ We split the tasks according to the different plots. Everybody was working on at
 
 - Adding a description for the dashboard and making it more obvious that the dropdowns below the map will eventually be global controls
 
+-  Making sure the plots automatically resize to adjust to the size of the screen (right now we need to be in 50% zoom to have an appropriate display)
+
 ## What we know is not working
 
 - Callbacks to connect all the graphs together (i.e., when a user selects a state from the map, all the other graphs should be updated to reflect data of that particular state. Currently only the 3 cards above the map are linked and the rest of the plots show the sum for all the states).
