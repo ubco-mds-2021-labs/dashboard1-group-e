@@ -1,7 +1,12 @@
+**Please adjust zoom of your screen to 50% to see all dropdowns properly**  
+
 Links to deployed app: 
-Justine - [american-superstore-dash](https://american-superstore-dash.herokuapp.com/)
-Mehul -
-Val -
+Justine - [american-superstore-dash](https://american-superstore-dash.herokuapp.com/)    
+    
+Mehul -     
+   
+Val -     
+     
 Evelyn - 
 
 # Superstore Sales Dashboard (Group E)
