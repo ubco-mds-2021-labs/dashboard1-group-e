@@ -1,6 +1,8 @@
+# Superstore Sales Dashboard     
+
 **Please adjust zoom of your screen to 50% to see all dropdowns properly**  
 
-Links to deployed app: 
+Links to the deployed app: 
     
 Justine - [american-superstore-dash](https://american-superstore-dash.herokuapp.com/)    
     
@@ -10,7 +12,7 @@ Val -    [American Superstore Dashboard](https://american-superstore.herokuapp.c
      
 Evelyn - [american-superstore-dashboard](https://american-superstore-dashboard.herokuapp.com/)
 
-# Superstore Sales Dashboard
+# Topic/Interest Description    
 
 Managing one of the biggest supermarket chain in the United States is no easy task. Tracking sales and profit figures across different states and segments can be challenging as there is a lot of data to process. Data visualization tools such as a sales dashboard can help paint a clearer picture of the performance of the stores in each state and segments. Our app will enable the target audience to explore different sales metrics for each state in order to better understand what factors contribute to a higher profit. Finally, this tool will help the marketing team target which category of products they should focus their efforts on.
 
