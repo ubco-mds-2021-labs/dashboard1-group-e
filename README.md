@@ -10,7 +10,7 @@ Mehul -  [American Superstore Dashboard](https://americansuperstore.herokuapp.co
    
 Val -    [American Superstore Dashboard](https://american-superstore.herokuapp.com/)
      
-Evelyn - [american-superstore-dashboard](https://american-superstore-dashboard.herokuapp.com/)
+Evelyn - [americansuperstore-dash](https://americansuperstore-dash.herokuapp.com/)
 
 ## Topic/Interest Description    
 
