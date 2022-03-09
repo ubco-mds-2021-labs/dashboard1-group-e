@@ -1,6 +1,9 @@
 import dash
 from dash import Dash, dcc, html, Input, Output
 from vega_datasets import data
+
+# from asyncio.windows_events import NULL
+# from tkinter import ALL
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
@@ -52,14 +55,11 @@ category_list.append("All")
 
 def wrangle_data(unwrangled_data):
     """Takes an unwrangled data set and formats it in the appropriate way
-
     Args:
         unwrangled_data (pandas dataframe): Data that needs to be wrangled
-
     Returns:
         pandas dataframe: A dataframe with a Profit_Margin column where the profit and sales are grouped over all cities. New columns are also
                             added for the abbreviation of the name of the state and its ID.
-
     """
     # Removing outlier
     df = unwrangled_data.drop(
@@ -95,7 +95,6 @@ df_plot5 = wrangle_data(df)
 # Create instance of app
 app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 server = app.server
-
 #########################################
 ######## Layout Components ##############
 #########################################
@@ -296,13 +295,11 @@ def update_data(
 ):
     """Appends lines for the states that have no sales for the specified combination of arguments (thus not present in the original dataframe).
         Their sales and profit are set to 0.
-
     Args:
         ship_mode (str, optional): Mode of shipment (can be one of First Class, Second Class, Same Day or Standard Class). Defaults to "First Class".
         segment (str, optional): . Component of a business (can be one of Consumer, Corporate or Home Office). Defaults to "Consumer".
         category (str, optional): Category of product (can be one of Furniture, Office Supplies or Technology). Defaults to "Furniture".
         sub_category (str, optional): Sub-Category of product (ex: sub-category of Furniture is Chairs). Defaults to "Bookcases".
-
     Returns:
         pandas dataframe: Returns a dataframe with all the rows resulting from the selected parameters for all the States. The states that
                           don't have sales for this combination of arguments have sales/profit/profit margin equal to 0.
@@ -355,14 +352,12 @@ def plot_map(
     sub_category="Bookcases",
 ):
     """_summary_
-
     Args:
         metric (str): Variable according to which we wish to show the chloropleth map (one of either Sales, Profit or Profit Margin)
         ship_mode (str, optional): Mode of shipment (can be one of First Class, Second Class, Same Day or Standard Class). Defaults to "First Class".
         segment (str, optional): . Component of a business (can be one of Consumer, Corporate or Home Office). Defaults to "Consumer".
         category (str, optional): Category of product (can be one of Furniture, Office Supplies or Technology). Defaults to "Furniture".
         sub_category (str, optional): Sub-Category of product (ex: sub-category of Furniture is Chairs). Defaults to "Bookcases".
-
     Returns:
         altair chart: A map of the United States where each state is colored in proportion to the metric chosen.
     """
@@ -379,9 +374,11 @@ def plot_map(
 
     # Formatting for color scheme and mid-range of legend
     if (metric == "Profit_Margin") or (metric == "Profit"):
-        scale_metric = alt.Scale(scheme="redblue", domainMid=0)
+        mid_scale_color = 0
+        color_theme = "redblue"
     else:
-        scale_metric = alt.Scale(scheme="blues")
+        mid_scale_color = 0
+        color_theme = "blues"
 
     updated_df = update_data(
         ship_mode=ship_mode,
@@ -405,7 +402,7 @@ def plot_map(
                 f"{metric}:Q",
                 alt.value("white"),
                 legend=alt.Legend(format=metric_format),
-                scale=scale_metric,
+                scale=alt.Scale(scheme=color_theme, domainMid=mid_scale_color),
             ),
             # color=alt.Color(
             #     f"{metric}:Q",
