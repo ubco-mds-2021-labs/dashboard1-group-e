@@ -10,7 +10,7 @@ import base64
 
 alt.data_transformers.disable_max_rows()
 # Read data
-df = pd.read_csv("../data/Superstore.csv")
+df = pd.read_csv("data/Superstore.csv")
 
 #########################################
 ######## Wrangling for each plot ########
