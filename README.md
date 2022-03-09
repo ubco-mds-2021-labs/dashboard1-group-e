@@ -34,7 +34,7 @@ Our dashboard aims to track the sales, profit and profit margin for all the *Ame
 Our dashboard aims to present the sales, profit and profit margin for all American Superstore stores across the United States. There are five main components in our dashboard which are:
 
 **1. Sales by Category Bar Plot**      
-This plot shows the sales and profit of the stores with respect to different sub-categories in the x-axis. This plot will have a drop-down menu which will filter the data by category (furniture, office supplies, and technology). Sales and profit figures are differentiated by different colored bars.
+This plot shows the sales and profit of the stores with respect to different sub-categories on the x-axis. This plot will have a drop-down menu which will filter the data by category (furniture, office supplies, and technology). Sales and profit figures are stacked together and differentiated by two different colored bars.
 
 **2. Metrics Proportion by Segment Pie Chart**     
 This plot shows the metrics proportion by segment. There are three segments in our data (consumer, corporate, and home office), each will have a different color and three metrics (sales, profit, and items sold) that the user can choose from the radio button options.
@@ -73,7 +73,7 @@ You can refer to these documentations:
     - [Plotly](https://plotly.com/python/)     
     
 - **Workflow:**     
-Developers should follow the basic rules of working in a GitHub project workflow ([GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow)). We highly recommend going through the `CODE_OF_CONDUCT.md` and `team_contract.md` files before start working.       
+Developers should follow the basic rules of working in a GitHub project workflow ([GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow)). We highly recommend going through the `CODE_OF_CONDUCT.md` and `team_contract.md` files before starting work.       
       
 ## References 
 
