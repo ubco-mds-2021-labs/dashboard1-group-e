@@ -102,7 +102,7 @@ server = app.server
 
 ## Components: Logo
 ### Reference: https://community.plotly.com/t/adding-local-image/4896/9
-# logo = html.Img(src=app.get_asset_url("logo.png"), style={"height": "75%"})
+logo = html.Img(src=app.get_asset_url("logo.png"), style={"height": "75%"})
 
 ## Components: Plot 1
 plot1 = html.Div(
