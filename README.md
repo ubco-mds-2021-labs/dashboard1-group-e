@@ -6,7 +6,7 @@ Justine - [american-superstore-dash](https://american-superstore-dash.herokuapp.
     
 Mehul -  [American Superstore Dashboard](https://americansuperstore.herokuapp.com/)
    
-Val -     
+Val -    [American Superstore Dashboard](https://american-superstore.herokuapp.com/)
      
 Evelyn - [american-superstore-dashboard](https://american-superstore-dashboard.herokuapp.com/)
 
