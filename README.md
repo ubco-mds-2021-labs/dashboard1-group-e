@@ -28,17 +28,21 @@ Feel free to navigate to the following sections to find out more about our dashb
 
 ## The problem
  
--   	The American Superstore’s marketing team wants to be able to visualize their entire sales figures in a more concise and aesthetically pleasing way.
--   	They want to identify product categories and regions where sales and profit are exceeding expectations. This way, they can maintain their marketing strategies in these areas and change them for the areas where these metrics don’t measure up. 
+- The American Superstore’s marketing team wants to be able to visualize their entire sales figures in a more concise and aesthetically pleasing way.
+
+- They want to identify product categories and regions where sales and profit are exceeding expectations. This way, they can maintain their marketing strategies in these areas and change them for the areas where these metrics don’t measure up. 
 
 ## The solution
  
 The Superstore Sales Dashboard app will:
  
--   	Make it easy for the American Superstore managers to view their entire database of sales figures in a dashboard format with custom charts and filters.
--   	Deliver information that is useful for making important marketing and sales decisions.
--   	Identify areas of weaknesses and strengths in their business.
--   	Offer a UI to filter for specific sales metrics or regions to detect potential performance discrepancies.
+- Make it easy for the American Superstore managers to view their entire database of sales figures in a dashboard format with custom charts and filters.
+
+- Deliver information that is useful for making important marketing and sales decisions.
+
+- Identify areas of weaknesses and strengths in their business.
+
+- Offer a UI to filter for specific sales metrics or regions to detect potential performance discrepancies.
 
 
 ## About our Dashboard
