@@ -4,7 +4,7 @@ Links to deployed app:
     
 Justine - [american-superstore-dash](https://american-superstore-dash.herokuapp.com/)    
     
-Mehul -     
+Mehul -  [American Superstore Dashboard](https://americansuperstore.herokuapp.com/)
    
 Val -     
      
