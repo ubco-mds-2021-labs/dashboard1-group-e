@@ -8,7 +8,7 @@ Mehul -
    
 Val -     
      
-Evelyn - 
+Evelyn - [american-superstore-dashboard](https://american-superstore-dashboard.herokuapp.com/)
 
 # Superstore Sales Dashboard (Group E)
 
