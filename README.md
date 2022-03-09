@@ -10,20 +10,22 @@ Val -    [American Superstore Dashboard](https://american-superstore.herokuapp.c
      
 Evelyn - [american-superstore-dashboard](https://american-superstore-dashboard.herokuapp.com/)
 
-# Superstore Sales Dashboard (Group E)
+# Superstore Sales Dashboard
 
 Managing one of the biggest supermarket chain in the United States is no easy task. Tracking sales and profit figures across different states and segments can be challenging as there is a lot of data to process. Data visualization tools such as a sales dashboard can help paint a clearer picture of the performance of the stores in each state and segments. Our app will enable the target audience to explore different sales metrics for each state in order to better understand what factors contribute to a higher profit. Finally, this tool will help the marketing team target which category of products they should focus their efforts on.
 
 Feel free to navigate to the following sections to find out more about our dashboard! 
 
-* [Short description of our dashboard](#Description)
+* [Short description of our dashboard](#About-our-Dashboard)
 * [Components of our dashboard](#Components)
 * [Description of the data we used](#Dataset)
 * [Reference to the kaggle dataset](#References)
 
-## Description
+## About our Dashboard
 
-Our dashboard aims to track the sales, profit and profit margin for all the *American Superstore*[^1] stores across the United States. Tracking of sales, profit and profit margin can be achieved by visualizing these metrics across different variables of interest such as `Ship Mode`, `Market Segment`, `State`, `Category` and `Sub-category` of items. Tracking sales and profits across different variables of interest is essential as it helps the audience better understand the current situation of the stores and enables them to notice which factors contribute most to the sales and profit. In doing so, better decisions can be made in order to guarantee the *American Superstore*'s success. 
+Our dashboard aims to track the sales, profit and profit margin for all the *American Superstore*[^1] stores across the United States. Tracking of sales, profit and profit margin can be achieved by visualizing these metrics across different variables of interest such as `Ship Mode`, `Market Segment`, `State`, `Category` and `Sub-category` of items. Tracking sales and profits across different variables of interest is essential as it helps the audience better understand the current situation of the stores and enables them to notice which factors contribute most to the sales and profit. In doing so, better decisions can be made in order to guarantee the *American Superstore*'s success.
+
+![](assets/app_gif.gif)
 
 ## Components
 
