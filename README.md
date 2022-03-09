@@ -73,7 +73,7 @@ You can refer to these documentations:
     - [Plotly](https://plotly.com/python/)     
     
 - **Workflow:**     
-Developers should follow the basic rules of working in a GitHub project workflow [GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow). We highly recommend going through the `CODE_OF_CONDUCT.md` and `team_contract.md` files before start working.       
+Developers should follow the basic rules of working in a GitHub project workflow ([GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow)). We highly recommend going through the `CODE_OF_CONDUCT.md` and `team_contract.md` files before start working.       
       
 ## References 
 
