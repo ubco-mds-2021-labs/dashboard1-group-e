@@ -12,16 +12,34 @@ Val -    [American Superstore Dashboard](https://american-superstore.herokuapp.c
      
 Evelyn - [americansuperstore-dash](https://americansuperstore-dash.herokuapp.com/)
 
-## Topic/Interest Description    
+## Introduction    
 
 Managing one of the biggest supermarket chain in the United States is no easy task. Tracking sales and profit figures across different states and segments can be challenging as there is a lot of data to process. Data visualization tools such as a sales dashboard can help paint a clearer picture of the performance of the stores in each state and segments. Our app will enable the target audience to explore different sales metrics for each state in order to better understand what factors contribute to a higher profit. Finally, this tool will help the marketing team target which category of products they should focus their efforts on.
 
 Feel free to navigate to the following sections to find out more about our dashboard! 
 
+* [The problem we are trying to address](#The-problem)
+* [The solution we are proposing](#The-solution)
 * [Short description of our dashboard](#About-our-Dashboard)
 * [Components of our dashboard](#Components)
 * [Description of the data we used](#Dataset)
 * [Reference to the kaggle dataset](#References)
+* [How you can contribute to our project](#Contributors’/Developers’-Guide)
+
+## The problem
+ 
+-   	The American Superstore’s marketing team wants to be able to visualize their entire sales figures in a more concise and aesthetically pleasing way.
+-   	They want to identify product categories and regions where sales and profit are exceeding expectations. This way, they can maintain their marketing strategies in these areas and change them for the areas where these metrics don’t measure up. 
+
+## The solution
+ 
+The Superstore Sales Dashboard app will:
+ 
+-   	Make it easy for the American Superstore managers to view their entire database of sales figures in a dashboard format with custom charts and filters.
+-   	Deliver information that is useful for making important marketing and sales decisions.
+-   	Identify areas of weaknesses and strengths in their business.
+-   	Offer a UI to filter for specific sales metrics or regions to detect potential performance discrepancies.
+
 
 ## About our Dashboard
 
