@@ -73,7 +73,11 @@ You can refer to these documentations:
     - [Plotly](https://plotly.com/python/)     
     
 - **Workflow:**     
-Developers should follow the basic rules of working in a GitHub project workflow ([GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow)). We highly recommend going through the `CODE_OF_CONDUCT.md` and `team_contract.md` files before starting work.       
+Developers should follow the basic rules of working in a GitHub project workflow ([GitHub workflow](https://docs.github.com/en/get-started/quickstart/github-flow)). We highly recommend going through the `CODE_OF_CONDUCT.md` and `team_contract.md` files before starting work.      
+    
+Please feel free and respectful to contact us by email. Raise project related issues [here](https://github.com/ubco-mds-2021-labs/dashboard1-group-e/issues).     
+
+---
       
 ## References 
 
