@@ -652,7 +652,7 @@ sidebar = dbc.Col(
             [
                 dbc.Col(
                     [
-                        html.H3("Introblabla"),
+                        html.H3(""),
                         dbc.Collapse(
                             html.P(
                                 """
