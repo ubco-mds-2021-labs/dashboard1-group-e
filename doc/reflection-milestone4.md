@@ -6,15 +6,15 @@ As part of milestone 4, we implemented several features in response to some of t
 
 ## What is not yet implemented: 
 
-• The user can also click on the map to select which state they want to view and this will also change the rest of the dashboards.
+• **The user can also click on the map to select which state they want to view and this will also change the rest of the dashboards.**
 
 As the feature might not be as obvious as selecting an option from a dropdown menu, we decided not to include it. 
 
-• Make a chained callback for each dropdown below the map plot so that only the combinations with a row in the dataset are offered as options.
+• **Make a chained callback for each dropdown below the map plot so that only the combinations with a row in the dataset are offered as options.**
 
 To truly reflect the state of our dataset, we have decided not to reduce our data to only include combinations where the data is available, but rather show “NA” instead.
 
-• Adding the option for the user to select multiple options for each dropdown and the results show an aggregate of the metrics (sales/profit) for this selection.
+• **Adding the option for the user to select multiple options for each dropdown and the results show an aggregate of the metrics (sales/profit) for this selection.**
 
 In the absence of data for some combinations of variables in the dataset, this feature would be ineffective since there will be many "NA"s.
 
@@ -33,8 +33,3 @@ One reoccurring theme in the feedbacks is to try to standardize the layout of ou
 ## Is there any feedback (or other insight) that you have found particularly valuable during your dashboard development?
 
 A classmate suggested that we include some text that would draw attention to our dashboard. We found this useful and therefore added a description and a learn more button to our dashboard.
-
-
-```python
-
-```
