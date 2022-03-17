@@ -818,7 +818,7 @@ def my_plot(state, category):  # callback function
         yaxis_tickformat="$.0f",
     )  # styling for plot
     fig.update_yaxes(tickprefix="<b>", ticksuffix="</b><br>")
-    fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>")
+    fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=22)
 
     if category == "Office Supplies":
         fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>", tickangle=20)
@@ -848,7 +848,7 @@ def update_figure(selected_metrics, selected_state):
         },
         title="Metrics Proportion by Segment",
     )
-
+    fig.update_traces(textfont_size=20)
     fig.update_layout(
         transition_duration=500,
         legend=dict(y=0.5, font_size=25),
@@ -856,6 +856,8 @@ def update_figure(selected_metrics, selected_state):
         title_font_size=25,
         plot_bgcolor="#f9f8eb",
         paper_bgcolor="#f9f8eb",
+        hovermode="x",
+        hoverlabel=dict(font_size=20),
     )
 
     return fig
@@ -879,10 +881,17 @@ def update_figure(selected_state):
     ].reset_index()
 
     fig = px.bar(filtered_df, x="Sub-Category", y="Quantity")
+    fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=22)
+    fig.update_yaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=22)
     fig.update_traces(marker_color="midnightblue").update_layout(
         margin=dict(l=20, r=20, t=40, b=9),
         plot_bgcolor="#f9f8eb",
         paper_bgcolor="#f9f8eb",
+        xaxis=dict(tickfont=dict(size=16)),
+        yaxis=dict(tickfont=dict(size=16)),
+        xaxis_title=None,
+        hovermode="x",
+        hoverlabel=dict(font_size=20),
     )
 
     return f"Top 5 Items Sold in: {selected_state}", fig
