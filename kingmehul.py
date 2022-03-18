@@ -674,7 +674,16 @@ sidebar = dbc.Col(
                                 html.H3("""The Dashboard consists of five       
                                 components, and all of them have different functionality with toggle options.    
                                                                    
-                                Someone please please add more text here!!""",
+                                For state-wise measures, please select a state using the dropdown above.
+                                The map plot provides a grand overview of the 3 key financial metrics(Sales, Profit, Profit-margin)
+                                while being color-coded to indicate their performance. We can do further filtering by specifying the
+                                ship mode, segment, and categories.
+                                
+                                The 4 other plots answer some of the key questions that we were curious about. The pie chart highlights
+                                the proportion of the metrics by customer segments. The bar plot in the bottom right answers what the 
+                                most sold items in each states are. The bar plot on the top right shows us the sales and profit
+                                figures for a chosen category. And the bar plot on the bottom left spotlights how discount affects 
+                                the performance metrics""",
                                 style={"color": "black", "width": "100%"},
                             )),
                             id="collapse", style={"width":"100%"},
