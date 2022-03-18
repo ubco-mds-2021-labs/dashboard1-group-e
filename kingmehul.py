@@ -1,5 +1,5 @@
 import dash
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, State
 from vega_datasets import data
 
 # from asyncio.windows_events import NULL
@@ -592,15 +592,18 @@ plot5 = html.Div(
 collapse = html.Div(
     [
         dbc.Button(
-            "Learn more",
+            "Click here to learn more",
             id="collapse-button",
             className="mb-3",
             outline=False,
             style={
-                "margin-top": "10px",
-                "width": "150px",
+                "margin-top": "5px",
+                "width": "100%",
                 "background-color": "white",
-                "color": "steelblue",
+                "color": "black",
+                "font-size": "130%",
+                "height":"45px",
+                #"padding-left":"60px"
             },
         ),
     ]
@@ -637,9 +640,6 @@ sidebar = dbc.Col(
                 html.H1(),
                 html.Br(),
                 html.H1(),
-                html.Br(),
-                html.H1(),
-                html.Br(),
                 html.H3("Select a state"),
                 dcc.Dropdown(
                     placeholder="Select a state",
@@ -657,21 +657,27 @@ sidebar = dbc.Col(
                 ),
             ]
         ),
+        html.Br(),
+        html.H1(),
+        html.H4(),
+        html.Br(),
+        html.H3(
+                    "More about the Dashboard:"
+                ),
         dbc.Row(
             [
                 dbc.Col(
                     [
-                        html.H3(""),
                         dbc.Collapse(
-                            html.P(
-                                """
-                        This dashboard is helping you understand x, y, and z, 
-                        which are really important because a, b, c.
-                        Start using the dashboard by clicking on 1, 2, 3
-                        and pulling i, ii, and iii.""",
-                                style={"color": "white", "width": "50%"},
-                            ),
-                            id="collapse",
+                           
+                            html.H3(   
+                                html.H3("""The Dashboard consists of five       
+                                components, and all of them have different functionality with toggle options.    
+                                                                   
+                                Someone please please add more text here!!""",
+                                style={"color": "black", "width": "100%"},
+                            )),
+                            id="collapse", style={"width":"100%"},
                         ),
                     ],
                     md=10,
@@ -752,7 +758,7 @@ app.layout = dbc.Container(
             className="g-0",
         )
     ],
-    style={"width": "100%", "backgroundColor": "#f9f8eb"},
+    style={"width": "100%", "backgroundColor": "#f9f8eb", "border": "12px lightgray solid"},
     fluid=True,
 )
 
@@ -762,16 +768,16 @@ app.layout = dbc.Container(
 ########## Callback  #########
 ##############################
 
-## Callback for learn more button
-# @app.callback(
-#     Output("collapse", "is_open"),
-#     Input("collapse-button", "n_clicks"),
-#     State("collapse", "is_open"),
-# )
-# def toggle_collapse(n, is_open):
-#     if n:
-#         return not is_open
-#     return is_open
+# Callback for learn more button
+@app.callback(
+    Output("collapse", "is_open"),
+    Input("collapse-button", "n_clicks"),
+    State("collapse", "is_open"),
+)
+def toggle_collapse(n, is_open):
+    if n:
+        return not is_open
+    return is_open
 
 
 ## Callback: Plot 1
