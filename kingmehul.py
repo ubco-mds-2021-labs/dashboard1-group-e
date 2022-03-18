@@ -33,8 +33,21 @@ df_plot1 = df.groupby(["State", "Category", "Sub-Category"], as_index=False)[
 states = sorted(df["State"].unique())
 ######### Data wrangling: Plot 3
 subcat = sorted(df["Sub-Category"].unique())
-######### Data wrangling: Plot 4
 
+######### Data wrangling: Plot 4
+df_plot4 = df.groupby(["State", "Category", "Sub-Category", "Ship Mode", "Segment"], as_index=False)[["Sales", "Profit","Discount"]].sum()
+df_plot4 = pd.DataFrame(df_plot4)
+df_plot4['Profit Margin'] = df_plot4['Profit']/df_plot4['Sales']
+                                      
+def categorise(row):
+    if row['Discount'] > 0:
+        return 'Yes'
+    return 'No'
+df_plot4['Discount_Status'] = df_plot4.apply(lambda row: categorise(row), axis=1)
+category_list = list(df_plot4["Category"].unique())
+category_list.append("All Categories")
+state_list = list(df_plot4["State"].unique())
+state_list.append("All States") 
 
 ######### Data wrangling: Plot 5 (map)
 
@@ -77,7 +90,6 @@ def wrangle_data(unwrangled_data):
 
 df_plot5 = wrangle_data(df)
 
-######### Data wrangling: Plot 6
 
 #####################################
 ############ App ####################
@@ -201,72 +213,62 @@ plot3 = dbc.Container(
 )
 
 ########## Component Plot 4
-plot4 = html.Div(
+
+plot4 =  html.Div(
     dbc.Container(
-        [  # here, I have created a container to stack plot and dropdown
+        [
             dbc.Col(
-                [
-                    dbc.Row(
-                        [
-                            dbc.Col(
-                                [
-                                    dcc.Dropdown(
-                                        id="category-widget4",  # ID for dropdown
-                                        value="Furniture",
-                                        options=[
-                                            {"label": category, "value": category}
-                                            for category in sorted(
-                                                df_plot1["Category"].unique()
-                                            )
-                                        ],
-                                        placeholder="Select a category",
-                                    )
-                                ]
-                            ),
-                            dbc.Col(
-                                [
-                                    dcc.Dropdown(
-                                        id="state-widget4",
-                                        value="New York",
-                                        options=[
-                                            {"label": state, "value": state}
-                                            for state in sorted(
-                                                df_plot1["State"].unique()
-                                            )
-                                        ],
-                                        placeholder="Select a state",
-                                    )
-                                ]
-                            ),
-                        ],
-                        style={
-                            "width": "10",
-                            "font-weight": "bold",
-                            "padding-left": "550px",
+            [
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            [
+                      
+                        dcc.Dropdown(id='Category-dropdown',
+                                    options=[{'label': k, 'value': k} for k in category_list],
+                                    placeholder="Select a category",
+                                    value='All Categories',
+                                    style={
+                                            "height": "45px",
+                                            "width": "100%",
+                                            "font-size": "120%",
+                                        }
+                                    ),
+                        dcc.RadioItems(id='type-radio',
+                                        options=[{'label': k, 'value': k} for k in ['Sales', 'Profit Margin']],
+                                        value='Sales',
+                                        style={
+                                            "font-size": "150%",
+                                        })
+                            ]
+                        )
+                ],
+                style={
+                            "width": "5",
+                            "padding-left": "950px",
                         },
-                    ),  # styling for dropdown
-                    dbc.Row(
-                        html.Iframe(
-                            id="barchart4",  # ID for bar chart
+
+            ),
+            dbc.Row(html.Iframe(
+                            id="mkt_graph",  # ID for bar chart
                             style={
                                 "border-width": "0",
                                 "width": "100%",
                                 "height": "500px",
                             },
                         )
-                    ),
+                    )
                 ]
             )
         ]
-    ),  # styling for plot
+    ),
     style={
         "width": "100%",
         "border": "6px lightgray solid",
         "backgroundColor": "#f9f8eb",
     },
 )  # styling for overall dashboard
-
-
+ 
 ########## Component Plot 5
 sales_card = dbc.Card(
     [
@@ -897,56 +899,86 @@ def update_figure(selected_state):
     return f"Top 5 Items Sold in: {selected_state}", fig
 
 
-## Callback: Plot 4
-@app.callback(  # dash decorator function
-    Output("barchart4", "srcDoc"),
-    [Input("state-widget4", "value"), Input("category-widget4", "value")],
-)
-def my_plot(state, category):  # callback function
+@app.callback( # Columns 2m_temp_prod, or....
+    Output('mkt_graph', 'srcDoc'),
+    [
+     Input('Category-dropdown', 'value'),
+    Input('dropdown_state', 'value'),
+     Input('type-radio', 'value'),])
+     
+     
+def make_graph(levels,states,type_graph):
+    filter_list = ["Sub-Category","Category","Discount_Status"]
+    if "All" not in states.split(" "):filter_list.append("State")
+    if type_graph != "Profit Margin":
+        group_by_profit = df_plot4.groupby(filter_list,as_index=False)[["Sales", "Profit Margin","Discount"]].sum()
+    else :
+        group_by_profit = df_plot4.groupby(filter_list,as_index=False)[["Sales","Profit Margin"]].mean()
+        
 
-    sub_categories = [
-        sub_cat
-        for sub_cat in df_plot1[
-            (df_plot1["State"] == state) & (df_plot1["Category"] == category)
-        ]["Sub-Category"].unique()
-    ]
-    sales = [
-        sales
-        for sales in df_plot1[
-            (df_plot1["State"] == state) & (df_plot1["Category"] == category)
-        ]["Sales"]
-    ]
-    profit = [
-        sales
-        for sales in df_plot1[
-            (df_plot1["State"] == state) & (df_plot1["Category"] == category)
-        ]["Profit"]
-    ]
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(x=sub_categories, y=sales, name="Sales", marker_color="red"))
-    fig.add_trace(
-        go.Bar(x=sub_categories, y=profit, name="Profit", marker_color="midnightblue")
-    )
-
+    title_all =  "All Categories"
+    state_all = "All states"
+    
+    if "All" not in levels.split(" "):
+        title_all = levels
+        group_by_profit = group_by_profit[group_by_profit["Category"]==levels]
+    if "All" not in states.split(" "):
+        state_all = states
+        group_by_profit = group_by_profit[group_by_profit["State"]==states]
+        
+    if type_graph!="Profit Margin":
+        fig = px.bar(group_by_profit, x="Sub-Category", y="Sales", color="Discount_Status", barmode='group', height=450,color_discrete_sequence=["Red","midnightblue"])
+        
+        fig.update_layout(
+            title={'text': "<b>Sales by "+str(title_all)+' in '+str(state_all)+"<b>",'y':1,'x':0.5,'xanchor': 'center','yanchor': 'top'},
+            title_font_size=25,
+            font_size=20,
+            font_color="black",
+            title_font_color="black",
+            legend_title_font_color="black",
+            legend_title = "Discount",
+            hovermode="x",
+            hoverlabel=dict(font_size=20),
+        )
+        
+        fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=25)
+        fig.update_yaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=25)      
+    else:
+        
+        
+        fig = px.bar(group_by_profit, x="Sub-Category", y="Profit Margin", color="Discount_Status", barmode='group', height=450 ,color_discrete_sequence=["Red","midnightblue"] )
+        
+        fig.update_layout(
+            title={'text': "<b>Profit/Loss by "+str(title_all)+' in '+str(state_all)+' '+'<b>','y':1,'x':0.5,'xanchor': 'center','yanchor': 'top'},
+            title_font_size=25,
+            font_size=20,
+            font_color="black",
+            title_font_color="black",
+            legend_title_font_color="black",
+            legend_title = "Discount",
+        
+        )
+        fig.update_xaxes(title={'text':str(levels)})
+        fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=25)
+        fig.update_yaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=25)
+        
+        fig.update_yaxes(tickformat=",.0%", title=None)
     fig.update_layout(
-        barmode="group",
-        xaxis_tickangle=0,
-        title="Overall Sales & Profit by Category",
-        title_font_size=25,
-        title_x=0.339,
-        title_y=0.96,
-        xaxis_title="Sub-categories",
-        margin=dict(l=20, r=20, t=45, b=9),
-        plot_bgcolor="#f9f8eb",
-        paper_bgcolor="#f9f8eb",
-        legend=dict(y=0.6, font_size=25),
-        xaxis=dict(tickfont=dict(size=12)),
-        hovermode="x unified",
-    )  # styling for plot
-    fig.update_yaxes(tickprefix="<b>", ticksuffix="</b><br>")
-    fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>")
-
+    plot_bgcolor="#f9f8eb",
+    paper_bgcolor="#f9f8eb",
+    legend=dict(
+        x=1,
+        y=1,
+        traceorder="reversed",
+        title_font_size = 24,
+        font=dict(
+            size=25,
+            color="black"
+        )
+    )
+)
+ 
+    
     return fig.to_html()
 
 
