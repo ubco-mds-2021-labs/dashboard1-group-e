@@ -35,19 +35,25 @@ states = sorted(df["State"].unique())
 subcat = sorted(df["Sub-Category"].unique())
 
 ######### Data wrangling: Plot 4
-df_plot4 = df.groupby(["State", "Category", "Sub-Category", "Ship Mode", "Segment"], as_index=False)[["Sales", "Profit","Discount"]].sum()
+df_plot4 = df.groupby(
+    ["State", "Category", "Sub-Category", "Ship Mode", "Segment"], as_index=False
+)[["Sales", "Profit", "Discount"]].sum()
 df_plot4 = pd.DataFrame(df_plot4)
-df_plot4['Profit Margin'] = df_plot4['Profit']/df_plot4['Sales']
-                                      
+
+# Adding column for profit margin
+df_plot4["Profit Margin"] = df_plot4["Profit"] / df_plot4["Sales"]
+
+
 def categorise(row):
-    if row['Discount'] > 0:
-        return 'Yes'
-    return 'No'
-df_plot4['Discount_Status'] = df_plot4.apply(lambda row: categorise(row), axis=1)
+    if row["Discount"] > 0:
+        return "Yes"
+    return "No"
+
+
+df_plot4["Discount_Status"] = df_plot4.apply(lambda row: categorise(row), axis=1)
+# dataset = df.groupby(['Category', 'Sub-Category','Discount_Status']).sum(['Sales']).reset_index()
 category_list = list(df_plot4["Category"].unique())
-category_list.append("All Categories")
-state_list = list(df_plot4["State"].unique())
-state_list.append("All States") 
+category_list.append("All")
 
 ######### Data wrangling: Plot 5 (map)
 
@@ -106,7 +112,7 @@ server = app.server
 
 
 ########## Component logo
-logo = html.Img(src=app.get_asset_url("logo.png"), style={"height": "100%"})
+logo = html.Img(src=app.get_asset_url("logo.png"), style={"height": "100%", "width":"100%"})
 
 ########## Component Plot 1
 plot1 = html.Div(
@@ -214,60 +220,61 @@ plot3 = dbc.Container(
 
 ########## Component Plot 4
 
-plot4 =  html.Div(
+plot4 = html.Div(
     dbc.Container(
-        [
+        [  # here, I have created a container to stack plot and dropdown
             dbc.Col(
-            [
-                dbc.Row(
-                    [
-                        dbc.Col(
-                            [
-                      
-                        dcc.Dropdown(id='Category-dropdown',
-                                    options=[{'label': k, 'value': k} for k in category_list],
-                                    placeholder="Select a category",
-                                    value='All Categories',
-                                    style={
-                                            "height": "45px",
-                                            "width": "100%",
-                                            "font-size": "120%",
-                                        }
-                                    ),
-                        dcc.RadioItems(id='type-radio',
-                                        options=[{'label': k, 'value': k} for k in ['Sales', 'Profit Margin']],
-                                        value='Sales',
-                                        style={
-                                            "font-size": "150%",
-                                        })
-                            ]
-                        )
-                ],
-                style={
-                            "width": "5",
-                            "padding-left": "950px",
-                        },
-
-            ),
-            dbc.Row(html.Iframe(
-                            id="mkt_graph",  # ID for bar chart
+                [   
+                    dbc.Row(
+                        [
+                            dcc.RadioItems(
+                                id="type-radio",
+                                options=[
+                                    {"label": k, "value": k}
+                                    for k in ["Sales", "Profit Margin"]
+                                ],
+                                value="Sales",
+                                style={
+                                    "width": "20",
+                                    "font-size": "150%",
+                                    "padding-left": "79%",
+                                },
+                                 inputStyle={
+                                     "margin-right": "4px",
+                                     "margin-left": "10px",
+                             },
+                            )
+                        ]
+                    ), 
+                 # styling for dropdown
+                    dbc.Row(
+                        dcc.Dropdown(
+                            id="Category-dropdown",
+                            options=[{"label": k, "value": k} for k in category_list],
+                            value="Furniture",
+                            placeholder="Select a category",
                             style={
-                                "border-width": "0",
-                                "width": "100%",
-                                "height": "500px",
+                                "height": "45px",
+                                "width": "50",
+                                "font-size": "120%",
+                                "padding-left": "79%"
                             },
                         )
-                    )
+                    ),
+                    dbc.Row(dcc.Graph(id="mkt_graph", style={"width":"150%"})),
+                    html.Br(),
                 ]
             )
         ]
     ),
     style={
         "width": "100%",
+        "backgroundColor": "#F9F8EB",
         "border": "6px lightgray solid",
-        "backgroundColor": "#f9f8eb",
+        #"height": "50",
     },
-)  # styling for overall dashboard
+)
+# styling for overall dashboard
  
 ########## Component Plot 5
 sales_card = dbc.Card(
@@ -731,7 +738,7 @@ app.layout = dbc.Container(
                                     className="g-0",
                                 ),
                                 dbc.Row(
-                                    [dbc.Col([plot4]), dbc.Col([plot3], width=4)],
+                                    [dbc.Col([plot4]), dbc.Col([dbc.Row([plot3], className="g-0", style={"height": "100%"},)], width=4)],
                                     className="g-0",
                                 ),
                             ],
@@ -882,7 +889,7 @@ def update_figure(selected_state):
         0:5
     ].reset_index()
 
-    fig = px.bar(filtered_df, x="Sub-Category", y="Quantity")
+    fig = px.bar(filtered_df, x="Sub-Category", y="Quantity", height=475)
     fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=22)
     fig.update_yaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=22)
     fig.update_traces(marker_color="midnightblue").update_layout(
@@ -898,88 +905,100 @@ def update_figure(selected_state):
 
     return f"Top 5 Items Sold in: {selected_state}", fig
 
-
-@app.callback( # Columns 2m_temp_prod, or....
-    Output('mkt_graph', 'srcDoc'),
+## Callback: Plot4
+@app.callback(  # Columns 2m_temp_prod, or....
+    Output("mkt_graph", "figure"),
     [
-     Input('Category-dropdown', 'value'),
-    Input('dropdown_state', 'value'),
-     Input('type-radio', 'value'),])
-     
-     
-def make_graph(levels,states,type_graph):
-    filter_list = ["Sub-Category","Category","Discount_Status"]
-    if "All" not in states.split(" "):filter_list.append("State")
-    if type_graph != "Profit Margin":
-        group_by_profit = df_plot4.groupby(filter_list,as_index=False)[["Sales", "Profit Margin","Discount"]].sum()
-    else :
-        group_by_profit = df_plot4.groupby(filter_list,as_index=False)[["Sales","Profit Margin"]].mean()
-        
-
-    title_all =  "All Categories"
-    state_all = "All states"
-    
-    if "All" not in levels.split(" "):
-        title_all = levels
-        group_by_profit = group_by_profit[group_by_profit["Category"]==levels]
-    if "All" not in states.split(" "):
-        state_all = states
-        group_by_profit = group_by_profit[group_by_profit["State"]==states]
-        
-    if type_graph!="Profit Margin":
-        fig = px.bar(group_by_profit, x="Sub-Category", y="Sales", color="Discount_Status", barmode='group', height=450,color_discrete_sequence=["Red","midnightblue"])
-        
-        fig.update_layout(
-            title={'text': "<b>Sales by "+str(title_all)+' in '+str(state_all)+"<b>",'y':1,'x':0.5,'xanchor': 'center','yanchor': 'top'},
-            title_font_size=25,
-            font_size=20,
-            font_color="black",
-            title_font_color="black",
-            legend_title_font_color="black",
-            legend_title = "Discount",
-            hovermode="x",
-            hoverlabel=dict(font_size=20),
-        )
-        
-        fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=25)
-        fig.update_yaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=25)      
-    else:
-        
-        
-        fig = px.bar(group_by_profit, x="Sub-Category", y="Profit Margin", color="Discount_Status", barmode='group', height=450 ,color_discrete_sequence=["Red","midnightblue"] )
-        
-        fig.update_layout(
-            title={'text': "<b>Profit/Loss by "+str(title_all)+' in '+str(state_all)+' '+'<b>','y':1,'x':0.5,'xanchor': 'center','yanchor': 'top'},
-            title_font_size=25,
-            font_size=20,
-            font_color="black",
-            title_font_color="black",
-            legend_title_font_color="black",
-            legend_title = "Discount",
-        
-        )
-        fig.update_xaxes(title={'text':str(levels)})
-        fig.update_xaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=25)
-        fig.update_yaxes(tickprefix="<b>", ticksuffix="</b><br>", title_font_size=25)
-        
-        fig.update_yaxes(tickformat=",.0%", title=None)
-    fig.update_layout(
-    plot_bgcolor="#f9f8eb",
-    paper_bgcolor="#f9f8eb",
-    legend=dict(
-        x=1,
-        y=1,
-        traceorder="reversed",
-        title_font_size = 24,
-        font=dict(
-            size=25,
-            color="black"
-        )
-    )
+        Input("Category-dropdown", "value"),
+        Input("type-radio", "value"),
+    ],
 )
- 
-    
-    return fig.to_html()
+def make_graph(levels, type_graph):
+    if type_graph != "Profit Margin":
+        group_by_profit = df_plot4.groupby(
+            ["Sub-Category", "Category", "Discount_Status"], as_index=False
+        )[["Sales", "Profit Margin", "Discount"]].sum()
+    else:
+        group_by_profit = df_plot4.groupby(
+            ["Sub-Category", "Category", "Discount_Status"], as_index=False
+        )[["Sales", "Profit Margin"]].mean()
+        
+    title_all = "All Categories"
+    if levels != "All":
+        title_all = levels
+        group_by_profit = group_by_profit[group_by_profit["Category"] == levels]
+    if type_graph != "Profit Margin":
+        fig = px.bar(
+            group_by_profit,
+            x="Sub-Category",
+            y="Sales",
+            color="Discount_Status",
+            barmode="group",
+            #height=1000,
+            color_discrete_sequence=["Red", "midnightblue"],
+        )
+        fig.update_layout(
+            title={
+                "text": "<b>Sales by " + str(title_all) + "<b>",
+                "y": 1,
+                "x": 0.05,
+            },
+            title_font_family="Calibri Light",
+            title_font_color='#7f7f7f',
+            legend_title="Discount Applied?",
+            plot_bgcolor="#F9F8EB",
+            paper_bgcolor="#F9F8EB",
+            legend=dict(y=0.6, font_size=20),
+            title_font_size=25,
+            xaxis=dict(tickfont=dict(size=16)),
+            yaxis=dict(tickfont=dict(size=16)),
+            margin=dict(l=0, r=0, t=60, b=50),
+            yaxis_tickformat="$.0f",
+        )
+        fig.update_xaxes(title_font_size=22)
+        fig.update_yaxes(title_font_size=22)
+    else:
+        fig = px.bar(
+            group_by_profit,
+            x="Sub-Category",
+            y="Profit Margin",
+            color="Discount_Status",
+            barmode="group",
+            #height=450,
+            color_discrete_sequence=["Red", "midnightblue"],
+        )
+        fig.update_layout(
+            title={
+                "text": "<b>Profit/Loss by " + str(title_all) + "<b>",
+                "y": 1,
+                "x": 0.05,
+            },
+            title_font_size=25,
+            title_font_family="Calibri Light",
+            legend_title="Discount Applied?",
+            legend=dict(y=0.6, font_size=20),
+            paper_bgcolor="#F9F8EB",
+            margin=dict(l=0, r=0, t=60, b=50),
+        )
+        fig.update_xaxes(title={"text": str(levels)}, title_font_size=22)
+        fig.update_yaxes(tickformat=",.0%", title="Profit Margin", title_font_size=22)
+    fig.update_layout(
+        plot_bgcolor="#F9F8EB",
+        title_font_size=30,
+        title_font_family="Calibri Light",
+        title_font_color='#7f7f7f',
+        paper_bgcolor="#F9F8EB",
+        xaxis=dict(tickfont=dict(size=16)),
+        yaxis=dict(tickfont=dict(size=16)),
+        margin=dict(l=0, r=0, t=60, b=50),
+       legend=dict(y=0.6, font_size=20),
+       hovermode="x",
+        hoverlabel=dict(
+            font_size=20,
+        )
+     
+    )
+    return fig
 
 
 ## Callback: Plot 5
