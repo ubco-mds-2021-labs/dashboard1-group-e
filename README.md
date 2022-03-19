@@ -18,7 +18,7 @@ Milestone 4:
  
 Evelyn -    
 Milestone 2: [americansuperstore-dash](https://americansuperstore-dash.herokuapp.com/)   
-Milestone 4: [americansuperstore-dash](https://americansuperstore-dash-m4.herokuapp.com/)   
+Milestone 4: [americansuperstore-dash-m4](https://americansuperstore-dash-m4.herokuapp.com/)   
 
 
 ## Introduction    
