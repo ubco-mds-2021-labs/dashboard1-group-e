@@ -1095,4 +1095,4 @@ def update_map(metric, state, ship_mode, segment, category, sub_category):
 
 # Run server
 if __name__ == "__main__":
-    app.run_server(port=8052, debug=True)
+    app.run_server()
