@@ -67,9 +67,6 @@ This plot shows the sales and profit margin figures for each Category/Sub-Catego
 **4. Top Five Items Sold Bar plot**      
 This plot shows the top five items sold in a particular state. The states data for this plot will change if the user selects a different state through the US Map or the state drop-down menu below the US Map. 
 
-**5. Top Five States with Highest Quantity Sold of an Item**      
-This plot shows the top five states which highest quantity sold a particular item. The items data for this plot will change if the user selects a different item through the drop-down menu.
-
 **6. US Map**      
 There are three components inside this plot. The first one is a drop-down menu that the user can select to filter the data for the whole dashboard. Changing the selection of the drop-down menu will update which state is highlighted in the US Map, the sales card, the profit card, the profit margin card as well as the selection for the other five plots discussed above. 
 
