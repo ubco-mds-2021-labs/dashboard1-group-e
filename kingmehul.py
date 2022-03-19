@@ -678,28 +678,6 @@ sidebar = dbc.Col(
                             - ### The bar plot in the bottom right shows the most popular items for the selected state across all categories. 
                             - ### The bar plot titled *Effect of Discount* illustrates how discount affects the performance metrics. It is desirable for sub-categories with an applied discount to result in more sales. This said, by applying a discount, we expect the profit margin to decrease."""),
             
-
-                            # [
-                            #     html.H3("- All the visualizations except for the Effect of Discount* bar plot are filtered for the state that is selected using the dropdown above."),
-                            #     html.Br(),
-                            #     html.H3("- The map plot allows us to compare the selected state's performance to that of the other states for a given metric (Sales, Profit, Profit-margin). Each state is colored in proportion to the metric that is selected using the radio buttons and the selected state is outlined in black."),
-                            #     html.Br(),
-                            #     html.H3("- The plot titled *Overall Sales & Profit by Category* allows us to infer whether or not a specific sub-category performs well, which would mean that both the sales and profit are high.")
-
-                            # ],
-                           
-                            # html.H3(   
-                            #     html.H3("""    The plot titled *Overall Sales & Profit by Category" allows us to infer whether or not a specific sub-category performs well, which would mean that both the sales and profit are high.
-                                                                   
-                            #     - All the visualizations except for the *Effect of Discount* bar plot are filtered for the state that is selected using the dropdown above.
-                            #     - The map plot allows us to compare the selected state's performance to that of the other states for a given metric (Sales, Profit, Profit-margin). 
-                            #     Each state is colored in proportion to the metric that is selected using the radio buttons and the selected state is outlined in black.
-                            #     -  
-                            #     - The pie chart titled *Metrics Proportion by Segment* highlights how the sales/profit/quantity vary according to the segments. We can use this plot to dicepher which segment should be targetted by the marketing sales to increase the sales/profit.
-                            #     -The bar plot in the bottom right shows the most popular items for the selected state across all categories. 
-                            #     -The bar plot titled "*Effect of Discount* illustrates how discount affects the performance metrics. It is desirable for sub-categories with an applied discount result in more sales. This said, by applying a discount, we expect the profit margin to decrease.""",
-                            #     style={"color": "black", "width": "100%"},
-                            # )),
                             id="collapse", style={"width":"100%"},
                         ),
                     ],
