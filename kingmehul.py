@@ -376,7 +376,7 @@ def update_data(
 
 def plot_map(
     metric="Sales",
-    state="Colorado",
+    state="California",
     ship_mode="First Class",
     segment="Consumer",
     category="Furniture",
@@ -644,7 +644,7 @@ sidebar = dbc.Col(
                 dcc.Dropdown(
                     placeholder="Select a state",
                     id="dropdown_state",
-                    value="Colorado",  # REQUIRED to show the plot on the first page load
+                    value="California",  # REQUIRED to show the plot on the first page load
                     options=[
                         {"label": state, "value": state}
                         for state in sorted(df_plot5["State"].unique())
@@ -669,23 +669,37 @@ sidebar = dbc.Col(
                 dbc.Col(
                     [
                         dbc.Collapse(
+
+                            dcc.Markdown("""
+                            
+                            - ### All the visualizations except for the *Effect of Discount* plot are filtered for the state that is selected using the dropdown above.
+                            - ### The map plot allows us to compare the selected state's performance to that of the other states for a given metric (Sales, Profit, Profit-margin). Each state is colored in proportion to the metric that is selected using the radio buttons and the selected state is outlined in black.
+                            - ### The pie chart titled *Metrics Proportion by Segment* highlights how the sales/profit/quantity vary according to the segments. We can use this plot to decipher which segment should be targetted by the marketing team to increase the sales/profit.
+                            - ### The bar plot in the bottom right shows the most popular items for the selected state across all categories. 
+                            - ### The bar plot titled *Effect of Discount* illustrates how discount affects the performance metrics. It is desirable for sub-categories with an applied discount to result in more sales. This said, by applying a discount, we expect the profit margin to decrease."""),
+            
+
+                            # [
+                            #     html.H3("- All the visualizations except for the Effect of Discount* bar plot are filtered for the state that is selected using the dropdown above."),
+                            #     html.Br(),
+                            #     html.H3("- The map plot allows us to compare the selected state's performance to that of the other states for a given metric (Sales, Profit, Profit-margin). Each state is colored in proportion to the metric that is selected using the radio buttons and the selected state is outlined in black."),
+                            #     html.Br(),
+                            #     html.H3("- The plot titled *Overall Sales & Profit by Category* allows us to infer whether or not a specific sub-category performs well, which would mean that both the sales and profit are high.")
+
+                            # ],
                            
-                            html.H3(   
-                                html.H3("""The Dashboard consists of five       
-                                components, and all of them have different functionality with toggle options.    
+                            # html.H3(   
+                            #     html.H3("""    The plot titled *Overall Sales & Profit by Category" allows us to infer whether or not a specific sub-category performs well, which would mean that both the sales and profit are high.
                                                                    
-                                For state-wise measures, please select a state using the dropdown above.
-                                The map plot provides a grand overview of the 3 key financial metrics(Sales, Profit, Profit-margin)
-                                while being color-coded to indicate their performance. We can do further filtering by specifying the
-                                ship mode, segment, and categories.
-                                
-                                The 4 other plots answer some of the key questions that we were curious about. The pie chart highlights
-                                the proportion of the metrics by customer segments. The bar plot in the bottom right answers what the 
-                                most sold items in each states are. The bar plot on the top right shows us the sales and profit
-                                figures for a chosen category. And the bar plot on the bottom left spotlights how discount affects 
-                                the performance metrics""",
-                                style={"color": "black", "width": "100%"},
-                            )),
+                            #     - All the visualizations except for the *Effect of Discount* bar plot are filtered for the state that is selected using the dropdown above.
+                            #     - The map plot allows us to compare the selected state's performance to that of the other states for a given metric (Sales, Profit, Profit-margin). 
+                            #     Each state is colored in proportion to the metric that is selected using the radio buttons and the selected state is outlined in black.
+                            #     -  
+                            #     - The pie chart titled *Metrics Proportion by Segment* highlights how the sales/profit/quantity vary according to the segments. We can use this plot to dicepher which segment should be targetted by the marketing sales to increase the sales/profit.
+                            #     -The bar plot in the bottom right shows the most popular items for the selected state across all categories. 
+                            #     -The bar plot titled "*Effect of Discount* illustrates how discount affects the performance metrics. It is desirable for sub-categories with an applied discount result in more sales. This said, by applying a discount, we expect the profit margin to decrease.""",
+                            #     style={"color": "black", "width": "100%"},
+                            # )),
                             id="collapse", style={"width":"100%"},
                         ),
                     ],
@@ -954,7 +968,7 @@ def make_graph(levels, type_graph):
         )
         fig.update_layout(
             title={
-                "text": "<b>Sales by " + str(title_all) + "<b>",
+                "text": "<b>Effect of Discount on the Sales by " + str(title_all) + "<b>",
                 "y": 1,
                 "x": 0.05,
             },
@@ -984,7 +998,7 @@ def make_graph(levels, type_graph):
         )
         fig.update_layout(
             title={
-                "text": "<b>Profit/Loss by " + str(title_all) + "<b>",
+                "text": "<b>Effect of Discount on the Profit/Loss for " + str(title_all) + "<b>",
                 "y": 1,
                 "x": 0.05,
             },
