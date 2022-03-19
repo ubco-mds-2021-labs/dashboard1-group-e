@@ -10,7 +10,9 @@ Mehul -  [American Superstore Dashboard](https://americansuperstore.herokuapp.co
    
 Val -    [American Superstore Dashboard](https://american-superstore.herokuapp.com/)
      
-Evelyn - [americansuperstore-dash](https://americansuperstore-dash.herokuapp.com/)
+Evelyn - 
+Milestone 2: [americansuperstore-dash](https://americansuperstore-dash.herokuapp.com/)
+Milestone 4: [americansuperstore-dash](https://americansuperstore-dash-m4.herokuapp.com/)
 
 ## Introduction    
 
