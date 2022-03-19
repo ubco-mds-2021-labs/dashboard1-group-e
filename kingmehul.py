@@ -102,7 +102,7 @@ df_plot5 = wrangle_data(df)
 #####################################
 
 # Create instance of app
-app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY], title = "American Superstore Dashboard")
 server = app.server
 
 
