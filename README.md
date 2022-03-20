@@ -14,7 +14,7 @@ Milestone 4: [American Superstore Dashboard - Final](https://american-superstore
    
 **Val** -       
 Milestone 2: [American Superstore Dashboard](https://american-superstore.herokuapp.com/)    
-Milestone 4: [American Superstore Dashboard](https://american-superstore-final.herokuapp.com/)
+Milestone 4: [American Superstore Dashboard - Final](https://american-superstore-final.herokuapp.com/)
  
 **Evelyn** -    
 Milestone 2: [americansuperstore-dash](https://americansuperstore-dash.herokuapp.com/)   
