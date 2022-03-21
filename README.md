@@ -6,7 +6,7 @@ Links to the deployed app:
     
 **Justine** -    
 Milestone 2: [american-superstore-dash](https://american-superstore-dash.herokuapp.com/)   
-Milestone 4:   
+Milestone 4: [American Superstore Dashboard - Final](https://american-superstore-analysis.herokuapp.com/)
 
 **Mehul** -       
 Milestone 2: [American Superstore Dashboard](https://americansuperstore.herokuapp.com/)    
