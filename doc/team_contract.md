@@ -92,3 +92,58 @@ You can explore and choose any you like, but if you cannot decide, I suggest usi
 
 
 All team members agree to the Feature Branch Workflow workflow, and the following conventions (e.g., master branch protection, at least 1 review before a pull request, at least 1 day before the deadline)
+
+## Final Reflection on Workload Distribution
+
+### Milestone 1
+
+| Category           |    Justine    |     Evelyn    |      Val      |     Mehul     |
+|--------------------|---------------|---------------|---------------|---------------|
+| Repository Setup   | 25%           | 25%            | 25%              | 25%              |
+| Sketch             | 10%            | 70%            | 10%            | 10%            |
+| Documentation      | 30%            | 30%            | 20%            | 20%            |
+| Project Management | 25%            | 25%            | 25%             | 25%             |
+| Troubleshooting    | -             | -             | -             | -             |
+
+Brief notes/explanations (optional):
+- No troubleshooting was needed for Milestone 1
+- Evelyn did most of the sketch and the rest of the tasks were divided pretty evenly.
+### Milestone 2
+
+
+| Category           |    Justine    |     Evelyn    |      Val      |     Mehul     |
+|---------------------------|---------------|---------------|---------------|---------------|
+| Documentation/Reflection  |    25%            |    25%            |  25%              |   25%             |
+| Writing new code          |    40%            |   20%             | 20%               |   20%             |
+| Code Reviews/editing      |   20%             |   20%             | 20%               | 40%               |
+| Project Management        |  25%              |    25%            |  25%              |   25%             |
+| Testing & Troubleshooting |  25%              |    25%            |  25%              |  25%              |
+
+Brief notes/explanations (optional):
+Justine worked on the map plot which was more time consuming. Mehul put more time putting all the code together and working on the layout. The other plots and tasks were distributed evenly.
+
+### Milestone 3
+
+| Category           |    Justine    |     Evelyn    |      Val      |     Mehul     |
+|---------------------------|---------------|---------------|---------------|---------------|
+| Documentation/Reflection  |    25%            |    25%            |  25%              |   25%             |
+| Writing new code          |    40%            |   20%             | 20%               |   20%             |
+| Code Reviews/editing      |   20%             |   20%             | 20%               | 40%               |
+| Project Management        |  25%              |    25%            |  25%              |   25%             |
+| Testing & Troubleshooting |  25%              |    25%            |  25%              |  25%              |
+
+Brief notes/explanations (optional):
+Similarily as for milestone 2, Justine worked on the map plot which was more time consuming. Mehul put more time putting all the code together and working on the layout. The other plots and tasks were distributed evenly.
+
+### Milestone 4
+
+| Category           | Justine  | Evelyn | Val | Mehul |
+|---------------------------|---------------|---------------|---------------|---------------|
+| Documentation/Reflection  |      20%          |      40%          |      20%          |    20%            |
+| Writing new code          |      35%          |       15%         |      15%          |    35%            |
+| Code Reviews/editing      |       25%         |       25%         |      25%          |    25%            |
+| Project Management        |       25%         |       25%         |      25%          |    25%            |
+| Testing & Troubleshooting |       25%         |       25%         |      25%          |    25%            |
+
+Brief notes/explanations (optional):
+Justine and Mehul worked on the layout and added the button for some extra functionality. 
